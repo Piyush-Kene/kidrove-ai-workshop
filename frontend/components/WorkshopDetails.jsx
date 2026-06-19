@@ -1,22 +1,22 @@
 const details = [
   {
-    title: "Age Group",
+    title: "👦 Age Group",
     value: "8-14 Years",
   },
   {
-    title: "Duration",
+    title: "⏳ Duration",
     value: "4 Weeks",
   },
   {
     title: "Mode",
-    value: "Online",
+    value: "💻 Online",
   },
   {
-    title: "Fee",
+    title: "💰 Fee",
     value: "₹2,999",
   },
   {
-    title: "Start Date",
+    title: "📅 Start  Date",
     value: "15 July 2026",
   },
 ];
@@ -35,7 +35,7 @@ const WorkshopDetails = () => {
                     {details.map((item) => (
                         <div
                             key={item.title}
-                            className="shadow-lg rounded-xl p-6 text-center"
+                            className="shadow-lg rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 text-center"
                         >
                             <h3 className="text-slate-500 text-sm uppercase tracking-wide">
                                 {item.title}
