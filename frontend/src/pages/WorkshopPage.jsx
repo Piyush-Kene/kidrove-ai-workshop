@@ -4,6 +4,8 @@ import WorkshopDetails from "/components/WorkshopDetails";
 import LearningOutcomes from "/components/LearningOutcomes";
 import FAQ from "/components/FAQ";
 import RegistrationForm from "/components/RegistrationForm";
+import footer from "/components/footer";
+import Footer from "/components/footer";
 
 const WorkshopPage = () => {
   return (
@@ -12,8 +14,9 @@ const WorkshopPage = () => {
       <Hero />
       <WorkshopDetails />
       <LearningOutcomes />
-      <FAQ />
       <RegistrationForm />
+      <FAQ />
+      <Footer/>
     </>
   );
 };
