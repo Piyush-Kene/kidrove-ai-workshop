@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
+import API_BASE_URL from "/src/config/api";
 
 const RegistrationForm = () => {
     const [loading, setLoading] = useState(false);
@@ -8,6 +10,7 @@ const RegistrationForm = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -15,15 +18,20 @@ const RegistrationForm = () => {
         try {
             setLoading(true);
 
-            console.log(data);
-
-            await axios.post(...)
-
-            toast.success(
-                "Registration submitted successfully!"
+            const response = await axios.post(
+                `${API_BASE_URL}/api/enquiry`,
+                data
             );
+
+            if (response.data.success) {
+                toast.success(response.data.message);
+                reset();
+            }
         } catch (error) {
-            toast.error("Something went wrong");
+            toast.error(
+                error?.response?.data?.message ||
+                "Something went wrong"
+            );
         } finally {
             setLoading(false);
         }

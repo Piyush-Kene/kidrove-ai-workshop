@@ -1,3 +1,5 @@
+import Enquiry from "../models/Enquiry.js";
+
 export const submitEnquiry = async (req, res) => {
   try {
     const { name, email, phone } = req.body;
@@ -9,16 +11,20 @@ export const submitEnquiry = async (req, res) => {
       });
     }
 
-    return res.status(200).json({
+    const enquiry = await Enquiry.create({
+      name,
+      email,
+      phone,
+    });
+
+    return res.status(201).json({
       success: true,
-      message: "Registration successful",
-      data: {
-        name,
-        email,
-        phone,
-      },
+      message: "Registration submitted successfully",
+      enquiry,
     });
   } catch (error) {
+    console.error(error);
+
     return res.status(500).json({
       success: false,
       message: "Server Error",
